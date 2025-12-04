@@ -73,82 +73,21 @@ bool prime(ll a)
             return 0;
     return 1;
 }
-ll maxSubarraySum(vector<int> &arr, int l, int r)
+
+void solve()
 {
-    ll best = arr[l], cur = arr[l];
-    for (int i = l + 1; i <= r; i++)
+    int n;
+    cin >> n;
+    vector<char> s;
+    string s1 ="";
+    for (int i = 1; i <= 10005; i++)
     {
-        cur = max(arr[i], cur + arr[i]);
-        best = max(best, cur);
+        s1+=to_string(i);
     }
-
-    return best;
-}
-vi maxRepeating(int l, int r, const string &s)
-{
-    vi dp(r - l + 1, 0);
-
-    l--;
-    r--;
-
-    for (int i = l; i <= r; i++)
-    {
-        int cnt = 1;
-        dp[i - l] = 1;
-        while (i + 1 <= r && s[i] == s[i + 1])
-        {
-            i++;
-            cnt++;
-            dp[i - l] = cnt;
-        }
-    }
-    return dp;
-}
-
-void solve1()
-{
-
-    string s;
-    cin >> s;
-
-    int n = s.size();
-
-    int m;
-    cin >> m;
-
-    vector<int> preSum(n+5, 0 ) , arr(n+5 , 0);
-
-    for (int i = 1; i < n-1; i++)
-    {
-        if (s[i] == s[i + 1])
-        {
-            arr[i] = 1;
-        }
-    }
-
-    for (int i = 1; i <= n; i++)
-    {
-        preSum[i] = preSum[i - 1] + arr[i];
-
-    }
-
-    while (m--)
-    {
-        int l, r;
-        cin >> l >> r;
-        l--;
-        r--;
-
-        // cout << endl;
-        if (l == 0)
-        {
-            cout << preSum[r-1] << endl;
-        }
-        else
-        {
-            cout << preSum[r - 1] - preSum[l - 1] << endl;
-        }
-    }
+    // for(int i = 1; i<=100 ; i++){
+    //    cout <<  s1[i] << " ";
+    // }
+    cout << s1[n-1] << endl;
 }
 int main()
 {
@@ -158,7 +97,7 @@ int main()
     // cin >> t;
     while (t--)
     {
-        solve1();
+        solve();
     }
     return 0;
 }
