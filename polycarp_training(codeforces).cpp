@@ -73,52 +73,37 @@ bool prime(ll a)
             return 0;
     return 1;
 }
-
+const int MX = 2e5 + 123;
 void solve()
 {
-    int n, m, c;
-    cin >> n >> m >> c;
-    vi arr(n + 5), brr(m + 5), diff(10000005, 0), preSum(n + 5);
-    cf(i, 1, n) cin >> arr[i];
-    cf(i, 1, m) cin >> brr[i];
-    int range = (n - m) + 1;
-    // cout << range << endl;
-    if (m == 1)
+    string s;
+    cin >> s;
+    int n = s.size();
+    ll pearl = 0, link = 0;
+    f(i, 0, n)
     {
-        cf(i, 1, n)
+        if (s[i] == 'o')
         {
-            arr[i] += brr[1];
-            cout << arr[i] % c << " ";
+            pearl++;
+        }
+        else if (s[i] == '-')
+        {
+            link++;
         }
     }
+  //  cout << link << endl;
 
+    if (pearl == 0)
+    {
+        cout << "YES" << endl;
+    }
+    else if (link % pearl == 0 || (link == 0 && pearl > 0))
+    {
+        cout << "YES" << endl;
+    }
     else
     {
-
-        for (int i = 1; i <= m; i++)
-        {
-
-            diff[i] += brr[i];
-            diff[i + range] -= brr[i];
-            // diff[range + 1] += brr[i];
-        }
-
-        for (int i = 1; i <= n; i++)
-        {
-            // cout << diff[i] << " ";
-            diff[i] = diff[i] + diff[i - 1];
-        }
-        //   cout << endl;
-        for (int i = 1; i <= n; i++)
-        {
-            cout << (arr[i] + diff[i]) % c << " ";
-            // cout << preSum[i] << " ";
-            //     cout << " "<< endl;
-            // arr[i] += preSum[i];
-
-            //    cout << arr[i] % c << " ";
-            // cf(i,  cout << arr[i] << " "; 1, n)
-        }
+        cout << "NO" << endl;
     }
 }
 int main()

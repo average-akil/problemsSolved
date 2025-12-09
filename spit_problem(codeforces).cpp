@@ -76,57 +76,22 @@ bool prime(ll a)
 
 void solve()
 {
-    int n, m, c;
-    cin >> n >> m >> c;
-    vi arr(n + 5), brr(m + 5), diff(10000005, 0), preSum(n + 5);
-    cf(i, 1, n) cin >> arr[i];
-    cf(i, 1, m) cin >> brr[i];
-    int range = (n - m) + 1;
-    // cout << range << endl;
-    if (m == 1)
+    int n;
+    cin >> n;
+    pi v(n);
+    f(i, 0, n)
     {
-        cf(i, 1, n)
-        {
-            arr[i] += brr[1];
-            cout << arr[i] % c << " ";
-        }
+        cin >> v.first >> v.second;
     }
-
-    else
-    {
-
-        for (int i = 1; i <= m; i++)
-        {
-
-            diff[i] += brr[i];
-            diff[i + range] -= brr[i];
-            // diff[range + 1] += brr[i];
-        }
-
-        for (int i = 1; i <= n; i++)
-        {
-            // cout << diff[i] << " ";
-            diff[i] = diff[i] + diff[i - 1];
-        }
-        //   cout << endl;
-        for (int i = 1; i <= n; i++)
-        {
-            cout << (arr[i] + diff[i]) % c << " ";
-            // cout << preSum[i] << " ";
-            //     cout << " "<< endl;
-            // arr[i] += preSum[i];
-
-            //    cout << arr[i] % c << " ";
-            // cf(i,  cout << arr[i] << " "; 1, n)
-        }
-    }
+    bool flag = 0;
+    
 }
 int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(0);
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--)
     {
         solve();
