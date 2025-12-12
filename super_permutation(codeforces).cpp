@@ -1,4 +1,5 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 #define ll long long
 #define pii pair<int, int>
@@ -78,39 +79,26 @@ void solve()
 {
     int n;
     cin >> n;
-    vector<pii> v(n);
-    f(i, 0, n)
+    if (n != 1 && n != 2 && prime(n))
     {
-        cin >> v[i].first >> v[i].second;
-    }
-    bool flag = 0;
-    f(i, 0, n)
-    {
-        int x = v[i].first + v[i].second;
-        f(j, 0, n)
-        {
-            int y = v[j].first + v[j].second;
-            if (x == v[j].first && y == v[i].first)
-            {
-                flag = 1;
-            }
-        }
-    }
-    if (flag)
-    {
-        cout << "YES" << endl;
+        cout << -1 << endl;
     }
     else
     {
-        cout << "NO" << endl;
+        cout << n << " ";
+        f(i, 1, n)
+        {
+            cout << i << " ";
+        }
+        cout << endl;
     }
 }
 int main()
 {
     ios::sync_with_stdio(false);
     cin.tie(0);
-    int t = 1;
-    // cin >> t;
+    int t;
+    cin >> t;
     while (t--)
     {
         solve();

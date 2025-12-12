@@ -88,7 +88,7 @@ void solve()
         else if (arr[i] == 200)
             twoHundred++;
     }
-    //cout << hundred << " " << twoHundred << endl;
+    // cout << hundred << " " << twoHundred << endl;
     sort(arr.begin(), arr.end());
     ll sum100 = hundred * 100, sum200 = twoHundred * 200;
 
@@ -100,10 +100,10 @@ void solve()
     }
     else if (sum100 > sum200)
     {
-        for (int i =1; i <= hundred; i++)
+        for (int i = 1; i <= hundred; i++)
         {
             sum200 += 100;
-             sum100 -= 100;
+            sum100 -= 100;
             cout << sum100 << " " << sum200 << endl;
             if (sum100 == sum200)
             {
@@ -114,7 +114,7 @@ void solve()
     }
     else if (sum200 > sum100)
     {
-        for(int i = hundred ; i<=n ; i++)
+        for (int i = hundred; i <= n; i++)
         {
 
             sum100 += 200;
@@ -156,6 +156,30 @@ void solve()
         cout << "NO" << endl;
     }
 }
+void solve2()
+{
+    int n;
+    cin >> n;
+    vi arr(n);
+    f(i, 0, n)
+    {
+        cin >> arr[i];
+    }
+    map<int, int> cnt;
+    for (auto u : arr)
+    {
+        cnt[u]++;
+    }
+    ll unique = 0;
+    for (auto u : cnt)
+    {
+        if (u.second == 1)
+        {
+            unique++;
+        }
+    }
+    cout << unique << endl;
+}
 int main()
 {
     ios::sync_with_stdio(false);
@@ -164,7 +188,7 @@ int main()
     // cin >> t;
     while (t--)
     {
-        solve();
+        solve2();
     }
     return 0;
 }

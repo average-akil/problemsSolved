@@ -76,33 +76,82 @@ bool prime(ll a)
 
 void solve()
 {
-    int n;
-    cin >> n;
-    vector<pii> v(n);
-    f(i, 0, n)
+    double h, l;
+    cin >> h >> l;
+
+    double ans = ((l * l) - (h * h)) / (2 * h);
+    cout << fixed << setprecision(9) << ans << endl;
+}
+void solve2()
+{
+    string s;
+    cin >> s;
+    int n = s.size();
+    string mirror = "AHIMOTUVWXY";
+    if (n == 1)
     {
-        cin >> v[i].first >> v[i].second;
-    }
-    bool flag = 0;
-    f(i, 0, n)
-    {
-        int x = v[i].first + v[i].second;
-        f(j, 0, n)
+        int pos = mirror.find(s[0]);
+        //  cout << pos << endl;
+        if (pos > -1)
         {
-            int y = v[j].first + v[j].second;
-            if (x == v[j].first && y == v[i].first)
-            {
-                flag = 1;
-            }
+            cout << "YES" << endl;
+        }
+        else
+        {
+            cout << "NO" << endl;
         }
     }
-    if (flag)
+    if (n == 2)
     {
-        cout << "YES" << endl;
+        if (s[0] == s[1])
+        {
+            int pos = mirror.find(s[0]);
+            //  cout << pos << endl;
+            if (pos > -1)
+            {
+                cout << "YES" << endl;
+            }
+            else
+            {
+                cout << "NO" << endl;
+            }
+
+            // cout << "YES" << endl;
+        }
+        else
+        {
+            cout << "NO" << endl;
+        }
     }
-    else
+    else if (n > 2)
     {
-        cout << "NO" << endl;
+        string s1, s2;
+        s1 += s;
+        s2 += s;
+        reverse(s2.begin(), s2.end());
+        sort(s1.begin(), s1.end());
+
+        s1.erase(unique(s1.begin(), s1.end()), s1.end());
+        // cout << s1 << endl;
+        ll cnt = 0;
+        f(i, 0, s1.size())
+        {
+            f(j, i, 11)
+            {
+                if (s1[i] == mirror[j])
+                    cnt++;
+            }
+        }
+        // cout << cnt << endl;
+        // cout << s2 << endl;
+        if (cnt == s1.size() && s == s2)
+        {
+            cout << "YES" << endl;
+        }
+        else
+        {
+            cout << "NO" << endl;
+        }
     }
 }
 int main()
@@ -113,7 +162,8 @@ int main()
     // cin >> t;
     while (t--)
     {
-        solve();
+        solve2();
+        cout << 0%6 << endl;
     }
     return 0;
 }
